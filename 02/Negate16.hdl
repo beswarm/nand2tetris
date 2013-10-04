@@ -1,0 +1,9 @@
+CHIP Negate16 {
+    IN data[16],ctl; 
+    OUT out[16];
+
+    PARTS:
+    // Put your code here.kangqh
+    Not16(in=data,out=notData);
+	Mux16(a=data,b=notData,sel=ctl,out=out); 
+}

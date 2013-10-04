@@ -1,0 +1,15 @@
+CHIP OutHints16 {
+    IN data[16]; 
+    OUT zr,
+    	ng;
+
+    PARTS:
+    // Put your code here.kangqh
+    //判断 该数是否为0
+    IsZero16(in=data,out=eq0);
+    //设置 zr，如果是0的话 zr为1 true 否则为0
+    Mux(a=false,b=true,sel=eq0,out=zr);
+    //设置 ng,如果 ng默认为 0
+    Mux(a=false,b=true,sel=data[15],out=ng);
+    
+}

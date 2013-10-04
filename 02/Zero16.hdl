@@ -1,0 +1,8 @@
+CHIP Zero16 {
+    IN data[16],ctl; 
+    OUT out[16];
+
+    PARTS:
+    // Put your code here.kangqh
+	Mux16(a=data,b[0..15]=false,sel=ctl,out=out); 
+}

@@ -1,0 +1,10 @@
+CHIP ALU16Core {
+    IN x[16],y[16],sel; 
+    OUT out[16];
+
+    PARTS:
+    Add16(a=x,b=y,out=out1);
+    And16(a=x,b=y,out=out2);
+    Mux16(a=out2,b=out1,sel=sel,out=out);
+    
+}
