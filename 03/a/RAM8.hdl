@@ -1,0 +1,34 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/03/a/RAM8.hdl
+
+/**
+ * Memory of 8 registers, each 16-bit wide.  
+ * The chip facilitates read and write operations, as follows:
+ *     Read:  out(t) = RAM8[address(t)](t)
+ *     Write: If load(t-1) then RAM8[address(t-1)](t) = in(t-1)
+ * In words: the chip always outputs the value stored at the memory 
+ * location specified by address. If load == 1, the in value is loaded 
+ * into the memory location specified by address.  This value becomes 
+ * available through the out output starting from the next time step.
+ */
+
+
+// What I make mistakes is in the Register parts: which I user Register(in=r0,load=a0,out=r0); Then I try to do another Register on the one picked up by Mux8Way16
+CHIP RAM8 {
+    IN in[16], load, address[3];
+    OUT out[16];
+
+    PARTS:
+	DMux8Way(in=load,sel=address,a=a0,b=a1,c=a2,d=a3,e=a4,f=a5,g=a6,h=a7);
+	Register(in=in,load=a0,out=r0);
+	Register(in=in,load=a1,out=r1);
+	Register(in=in,load=a2,out=r2);
+	Register(in=in,load=a3,out=r3);
+	Register(in=in,load=a4,out=r4);
+	Register(in=in,load=a5,out=r5);
+	Register(in=in,load=a6,out=r6);
+	Register(in=in,load=a7,out=r7);
+	Mux8Way16(a=r0,b=r1,c=r2,d=r3,e=r4,f=r5,g=r6,h=r7,sel=address,out=out);
+}
