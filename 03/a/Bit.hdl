@@ -17,7 +17,7 @@ CHIP Bit {
     // Put your code here. kangqh
     Mux(a=previousOutput,b=in,sel=load,out=actualIn);
     
-    //根据input的值  更换了 output的值
+    
     
     DFF(in=actualIn,out=out,out=previousOutput);
    
