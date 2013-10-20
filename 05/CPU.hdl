@@ -78,20 +78,20 @@ CHIP CPU {
 
 
 // The PC Part
-	//pc need to load when outM1>0&j3=1 OR  outM1=0&j2=0 OR outM1<0&j1=0 &i-bit =1
+	//pc need to load when  &i-bit =1
 	Or(a=isZero,b=isNegative,out=both);
 	Not(in=both,out=isPositive);
 
-	And(a=isPositive,b=instruction[2],out=JGT);
-	And(a=isZero,b=instruction[1],out=JEQ);
-	And(a=isNegative,b=instruction[0],out=JLT);
+	//when isZero
+	Mux8Way(a=false,b=false,c=true,d=true,e=false,f=false,g=true,h=true,sel=instruction[0..2],out=zeroChoice);
+	Mux8Way(a=false,b=true,c=false,d=true,e=false,f=true,g=false,h=true,sel=instruction[0..2],out=positiveChoice);
+	Mux8Way(a=false,b=false,c=false,d=false,e=true,f=true,g=true,h=true,sel=instruction[0..2],out=negativeChoice);
 	
-	And(a=JGT,b=instruction[15],out=isNeeded1);
-	And(a=JEQ,b=instruction[15],out=isNeeded2);
-	And(a=JLT,b=instruction[15],out=isNeeded3);
-	
-	Or(a=isNeeded1,b=isNeeded2,out=isNeeded12);
-	Or(a=isNeeded12,b=isNeeded3,out=isNeeded);
-
+	And(a=isZero,b=zeroChoice,out=needInZ);
+	And(a=isPositive,b=positiveChoice,out=needInP);
+	And(a=isNegative,b=negativeChoice,out=needInN);
+	Or(a=needInZ,b=needInP,out=needInZP);
+	Or(a=needInZP,b=needInN,out=isNeed);
+	And(a=isNeed,b=instruction[15],out=isNeeded);
 	PC(in=aRegister,load=isNeeded,inc=true,reset=reset,out[0..14]=pc);
 }
