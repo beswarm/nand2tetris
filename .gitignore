@@ -1,0 +1,8 @@
+*.rpm
+*.tar.gz
+*.retry
+.idea
+.vagrant
+*.log
+/vagrant/spawn/elasticsearch/roles/elasticsearch
+data/*
