@@ -5,6 +5,9 @@
 
 /** 
  * Multiplexor. If sel == 1 then out = b else out = a.
+ × this is choose only one from many  inputs  according to 
+ * the 'sel' like order. maybe better to say 
+ * only one survived the selection phase.
  */
 
 CHIP Mux {

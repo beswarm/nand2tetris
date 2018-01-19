@@ -12,7 +12,7 @@ CHIP And {
     OUT out;
 
     PARTS:
-    // Put your code here. Kangqh
+    // Put your code here. by beswarm
     Nand(a=a,b=b,out=outo);
     Not(in=outo,out=out);
     
