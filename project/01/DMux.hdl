@@ -4,7 +4,9 @@
 // File name: projects/01/DMux.hdl
 
 /**
- * Dmultiplexor.  
+ * demultiplexor.  
+ * which takes a single input and routes it to 2^n output according to n select lines.
+ * basically it can be called 16 bit 1 way  DMux 
  * {a,b} = {in,0} if sel == 0
  *         {0,in} if sel == 1
  * out
