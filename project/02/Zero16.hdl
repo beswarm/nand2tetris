@@ -3,6 +3,6 @@ CHIP Zero16 {
     OUT out[16];
 
     PARTS:
-    // Put your code here.kangqh
+    // Put your code here.
 	Mux16(a=data,b[0..15]=false,sel=ctl,out=out); 
 }

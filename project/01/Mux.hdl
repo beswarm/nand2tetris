@@ -4,7 +4,7 @@
 // File name: projects/01/Mux.hdl
 
 /** 
- * Multiplexor. If sel == 1 then out = b else out = a.
+ * Multiplexer. If sel == 1 then out = b else out = a.
  × this is choose only one from many  inputs  according to 
  * the 'sel' like order. maybe better to say 
  * only one survived the selection phase.
@@ -12,6 +12,9 @@
  * which takes 2^n inputs and select one to outputs.  
  * you can understand , as your choose only one  from many 2^n potentials . 
  * only you, only you. 
+ *   ----A                                                        ------A
+ *   ----B    (multiplexer) -----(A/B/C)---->  (demultiplexer)    ------B
+ *   ----C                                                        ------C
  */
 
 CHIP Mux {

@@ -4,7 +4,7 @@ CHIP OutHints16 {
     	ng;
 
     PARTS:
-    // Put your code here.kangqh
+    // Put your code here.
     //判断 该数是否为0
     IsZero16(in=data,out=eq0);
     //设置 zr，如果是0的话 zr为1 true 否则为0

@@ -8,7 +8,9 @@
  * a + b + c, and carry, the most significant bit of a + b + c.
  * 1. Understand the meaning of LSB and MSB. Image it represents the money you have
  *    which bit do your care more?
- * 2. Why full adder? because when you add , it use two numbers and another carry number	 
+ * 2. Why full adder? because when you add , you have to deal with carry bit besides.
+ *    half adder do not deal with it. 
+ * 3. there are two kinds of full adder implementations. Ripple-Carry Adder，RCA and Carry-Lookahead Adder CLA
  */
 
 CHIP FullAdder {
